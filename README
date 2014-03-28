@@ -2,10 +2,10 @@ Goal: Implement a CPU scheduler.
 
 Requirements:
 
-- Scheduler will sort processes by maximum priority and serve them to the CPU for execution.
-- Process priority defined as Background, Normal or Critical.
-- Processes will execute on CPU for 100ms before the scheduler replaces them on the Ready Queue and serves the next process of highest priority.
-- Ready Queue will bubble highest priority process to the top of the queue.
+1. Scheduler will sort processes by maximum priority and serve them to the CPU for execution.
+2. Process priority defined as Background, Normal or Critical.
+3. Processes will execute on CPU for 100ms before the scheduler replaces them on the Ready Queue and serves the next process of highest priority.
+4. Ready Queue will bubble highest priority process to the top of the queue.
 
 Implementation:
 
@@ -31,4 +31,4 @@ Ready Queue
 The ready queue extends the priority queue and provides methods to the scheduler to enqueue(), dequeue() and check if the priority queue isFull() or isEmpty().
 The enqueue() and dequeue() methods are synchronized and thus are blocking. If the queue is full or empty, the queue will be forced wo wait for notification before adding or removing another process.
 
-*******************************All code written by liam quinlan.********************************************************************************
+*All code written by liam quinlan.*
