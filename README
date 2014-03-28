@@ -24,8 +24,11 @@ The process will simulate any CPU process. It has a priority, a run time and a l
 Scheduler
 The scheduler is implemented as a thread that will continuously run and take processes from the ready queue and place them on the CPU. The CPU will decrement the processes remaining execution time by 100ms. If the process has not completed execution it will be placed back on the ready queue to await it's next turn on the CPU.
 
-Ready Queue
-The ready queue extends the priority queue and provides methods to the scheduler to enqueue(), dequeue() and check if the priority queue isFull() or isEmpty().   
-			  
+ProcessHeapSort
+The process heap sort is a fundamental component of this project. In this I have implemented the Heap Sort algorithm to take in a process and then keep splitting the queue and re-ordering until the highest priority process has been sorted to the top.
 
-All code written by liam quinlan.
+Ready Queue
+The ready queue extends the priority queue and provides methods to the scheduler to enqueue(), dequeue() and check if the priority queue isFull() or isEmpty().
+The enqueue() and dequeue() methods are synchronized and thus are blocking. If the queue is full or empty, the queue will be forced wo wait for notification before adding or removing another process.
+
+*******************************All code written by liam quinlan.********************************************************************************
