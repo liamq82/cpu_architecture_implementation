@@ -1,3 +1,31 @@
-Java implementation of cpu architecture.
+Goal: Implement a CPU scheduler.
+
+Requirements:
+
+- Scheduler will sort processes by maximum priority and serve them to the CPU for execution.
+- Process priority defined as Background, Normal or Critical.
+- Processes will execute on CPU for 100ms before the scheduler replaces them on the Ready Queue and serves the next process of highest priority.
+- Ready Queue will bubble highest priority process to the top of the queue.
+
+Implementation:
+
+This project was built using test driven development(TDD), which I am a big fan of. The scheduler was broken down into mutliple compoments. Each component was built using TDD and then put together to build the overall CPU and scheduler.
+The scheduler is implemented as a thread that will continuously take processes off the Ready Queue and place them on the CPU for execution. After 100ms the scheduler will remove the process from the CPU and place it back on the ready queue. The ready queue will then re-order the processes in order of highest to lowest priority for the scheduler to take the next highest process off the queue.
+All processes are time stamped and the CPU will decrement their time by 100ms after each execution. Processes will move between the Ready Queue and CPU until they have finished execution.
+
+Components:
+
+CPU
+The CPU has a setProcess(), getProcess() and execute() method().The Scheduler will use the setProcess() method to set a process on the cpu for execution. The CPU will timestamp the process and then execute it which will decrement the process remaining execution time by 100ms.
+
+Process
+The process will simulate any CPU process. It has a priority, a run time and a lastRun time. It also overrides the compareTo() method to enable the comparision of the priority two processes for use in the priority queue.
+
+Scheduler
+The scheduler is implemented as a thread that will continuously run and take processes from the ready queue and place them on the CPU. The CPU will decrement the processes remaining execution time by 100ms. If the process has not completed execution it will be placed back on the ready queue to await it's next turn on the CPU.
+
+Ready Queue
+The ready queue extends the priority queue and provides methods to the scheduler to enqueue(), dequeue() and check if the priority queue isFull() or isEmpty().   
+			  
 
 All code written by liam quinlan.
